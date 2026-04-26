@@ -3,42 +3,6 @@
    ========================================= */
 
 /* --- CSS Variables --- */
-/* :root {
-  --bg:          #0d0f14;
-  --bg-surface:  #13161e;
-  --bg-sidebar:  #0f1117;
-  --border:      #1e2230;
-  --border-light:#282d3e;
-
-  --text:        #e8ecf5;
-  --text-muted:  #6b7593;
-  --text-dim:    #9099b5; */
-
-  /* Language accent colours */
-  /* --java:    #f89820;
-  --python:  #4b8bbe;
-  --js:      #f7df1e;
-  --react:   #61dafb;
-  --node:    #68a063;
-  --spring:  #6db33f;
-  --git:     #f05032;
-  --docker:  #2496ed;
-  --linux:  #0d0f14;
-
-  --accent:  #7c6fff;
-  --accent2: #ff6b9d;
-  --accent3: #00d9b4;
-
-  --sidebar-w:      260px;
-  --sidebar-collapsed: 64px;
-  --topbar-h:       56px;
-
-  --radius:   10px;
-  --radius-lg:16px;
-  --shadow:   0 4px 24px rgba(0,0,0,.4);
-  --transition: .22s cubic-bezier(.4,0,.2,1);
-} */
-
 :root {
   --bg:          #f5f7fa;
   --bg-surface:  #ffffff;
