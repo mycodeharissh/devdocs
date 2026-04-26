@@ -3,7 +3,7 @@
    ========================================= */
 
 /* --- CSS Variables --- */
-:root {
+/* :root {
   --bg:          #0d0f14;
   --bg-surface:  #13161e;
   --bg-sidebar:  #0f1117;
@@ -12,10 +12,10 @@
 
   --text:        #e8ecf5;
   --text-muted:  #6b7593;
-  --text-dim:    #9099b5;
+  --text-dim:    #9099b5; */
 
   /* Language accent colours */
-  --java:    #f89820;
+  /* --java:    #f89820;
   --python:  #4b8bbe;
   --js:      #f7df1e;
   --react:   #61dafb;
@@ -23,6 +23,7 @@
   --spring:  #6db33f;
   --git:     #f05032;
   --docker:  #2496ed;
+  --linux:  #0d0f14;
 
   --accent:  #7c6fff;
   --accent2: #ff6b9d;
@@ -35,6 +36,42 @@
   --radius:   10px;
   --radius-lg:16px;
   --shadow:   0 4px 24px rgba(0,0,0,.4);
+  --transition: .22s cubic-bezier(.4,0,.2,1);
+} */
+
+:root {
+  --bg:          #f5f7fa;
+  --bg-surface:  #ffffff;
+  --bg-sidebar:  #ffffff;
+  --border:      #e2e8f0;
+  --border-light:#cbd5e1;
+
+  --text:        #1a202c;
+  --text-muted:  #718096;
+  --text-dim:    #4a5568;
+
+  /* Language accent colours — unchanged */
+  --java:    #f89820;
+  --python:  #4b8bbe;
+  --js:      #d4a800;
+  --react:   #0ea5c9;
+  --node:    #4a7c3f;
+  --spring:  #4e8a2a;
+  --linux:   #0d0f14;
+  --git:     #e03c28;
+  --docker:  #1a7bbf;
+
+  --accent:  #6c63ff;
+  --accent2: #e8407a;
+  --accent3: #00b89c;
+
+  --sidebar-w:         260px;
+  --sidebar-collapsed: 64px;
+  --topbar-h:          56px;
+
+  --radius:   10px;
+  --radius-lg:16px;
+  --shadow:   0 4px 24px rgba(0,0,0,.08);
   --transition: .22s cubic-bezier(.4,0,.2,1);
 }
 
@@ -494,7 +531,7 @@ p.doc-text {
 
 /* Code blocks */
 pre.code-block {
-  background: #0a0c12;
+  background: #1e2433;   /* was #0a0c12 */
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 18px 20px;

@@ -19,6 +19,7 @@
       { id: "springboot", label: "Spring Boot",dot: "var(--spring)", badge: "3.x",  href: "springboot.html" },
     ]},
     { group: "Tools", items: [
+      { id: "linux",    label: "Linux", dot: "var(--linux)",    href: "linux.html" },
       { id: "git",    label: "Git & GitHub", dot: "var(--git)",    href: "git.html" },
       { id: "docker", label: "Docker",       dot: "var(--docker)", href: "docker.html" },
     ]},
