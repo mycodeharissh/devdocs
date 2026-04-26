@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JavaScript — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(247,223,30,.1)">🟨</div>
+  <div>
+    <h1>JavaScript</h1>
+    <span class="page-version">ES2024</span>
+  </div>
+</div>
+<p class="doc-text">JavaScript is the language of the web, running in every browser and on servers via Node.js. ES2024 adds <code>Object.groupBy</code>, <code>Promise.withResolvers</code>, and <code>ArrayBuffer.transfer</code>.</p>
+<h2 class="section-title">ES2024 Highlights</h2>
+<pre class="code-block"><span class="code-lang">js</span><code>// Object.groupBy
+const people = [
+  { name: "Alice", dept: "Engineering" },
+  { name: "Bob",   dept: "Design" },
+  { name: "Carol", dept: "Engineering" },
+];
+const byDept = Object.groupBy(people, p => p.dept);
+// { Engineering: [...], Design: [...] }
+
+// Promise.withResolvers
+const { promise, resolve, reject } = Promise.withResolvers();
+setTimeout(() => resolve("done!"), 1000);
+console.log(await promise); // "done!"</code></pre>
+<h2 class="section-title">Async Patterns</h2>
+<pre class="code-block"><span class="code-lang">js</span><code>// Async/await with error handling
+async function fetchUser(id) {
+  try {
+    const res = await fetch(`/api/users/${id}`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.error("Failed:", err.message);
+    return null;
+  }
+}
+
+// Top-level await (ESM)
+const user = await fetchUser(42);</code></pre>
+<h2 class="section-title">Destructuring & Spread</h2>
+<pre class="code-block"><span class="code-lang">js</span><code>const { name, age = 25, ...rest } = user;
+const merged = { ...defaults, ...overrides };
+
+const [first, , third, ...tail] = array;</code></pre>
+<div class="callout callout-info"><strong>ℹ️ Note</strong>All modern browsers support ES2024 natively. For legacy support, use Babel or target ES2017+ in your build tool.</div>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

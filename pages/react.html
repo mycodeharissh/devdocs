@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>React — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(97,218,251,.12)">⚛️</div>
+  <div>
+    <h1>React</h1>
+    <span class="page-version">v19</span>
+  </div>
+</div>
+<p class="doc-text">React 19 ships the React Compiler (auto-memoization), Actions API for async mutations, and new hooks — <code>use()</code>, <code>useOptimistic</code>, <code>useFormStatus</code>.</p>
+<h2 class="section-title">Functional Component</h2>
+<pre class="code-block"><span class="code-lang">jsx</span><code>import { useState } from "react";
+
+export default function Counter() {
+  const [count, setCount] = useState(0);
+  return (
+    &lt;div&gt;
+      &lt;p&gt;Count: {count}&lt;/p&gt;
+      &lt;button onClick={() => setCount(c => c + 1)}&gt;+1&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+<h2 class="section-title">React 19 — use() Hook</h2>
+<pre class="code-block"><span class="code-lang">jsx</span><code>import { use, Suspense } from "react";
+
+async function fetchUser(id) {
+  const res = await fetch(`/api/users/${id}`);
+  return res.json();
+}
+
+function UserCard({ userPromise }) {
+  const user = use(userPromise);   // unwrap a Promise
+  return &lt;h2&gt;{user.name}&lt;/h2&gt;;
+}
+
+export default function App() {
+  return (
+    &lt;Suspense fallback={&lt;p&gt;Loading…&lt;/p&gt;}&gt;
+      &lt;UserCard userPromise={fetchUser(1)} /&gt;
+    &lt;/Suspense&gt;
+  );
+}</code></pre>
+<h2 class="section-title">useOptimistic</h2>
+<pre class="code-block"><span class="code-lang">jsx</span><code>import { useOptimistic, useState } from "react";
+
+function TodoList({ todos, onAdd }) {
+  const [optimisticTodos, addOptimistic] = useOptimistic(
+    todos,
+    (state, newTodo) => [...state, { ...newTodo, pending: true }]
+  );
+
+  async function submitAction(formData) {
+    const todo = { text: formData.get("text") };
+    addOptimistic(todo);   // instant UI update
+    await onAdd(todo);     // real server call
+  }
+  // ...
+}</code></pre>
+<div class="callout callout-tip"><strong>💡 Tip</strong>With React 19's compiler, most manual <code>useMemo</code> / <code>useCallback</code> calls become unnecessary — the compiler handles it automatically.</div>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

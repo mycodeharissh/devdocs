@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Spring Boot — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(109,179,63,.15)">🌿</div>
+  <div>
+    <h1>Spring Boot</h1>
+    <span class="page-version">3.x / Spring 6</span>
+  </div>
+</div>
+<p class="doc-text">Spring Boot 3.x requires Java 17+ and Jakarta EE 10. It ships with native compilation via GraalVM, virtual thread support, and improved observability.</p>
+<h2 class="section-title">REST Controller</h2>
+<pre class="code-block"><span class="code-lang">java</span><code>@RestController
+@RequestMapping("/api/users")
+public class UserController {
+
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity&lt;User&gt; getUser(@PathVariable Long id) {
+        return userService.findById(id)
+            .map(ResponseEntity::ok)
+            .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public User createUser(@RequestBody @Valid CreateUserDto dto) {
+        return userService.create(dto);
+    }
+}</code></pre>
+<h2 class="section-title">Application Properties</h2>
+<pre class="code-block"><span class="code-lang">yaml</span><code>spring:
+  application:
+    name: my-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/mydb
+    username: ${DB_USER}
+    password: ${DB_PASS}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    show-sql: false
+
+server:
+  port: 8080</code></pre>
+<div class="callout callout-tip"><strong>💡 Virtual Threads</strong>Add <code>spring.threads.virtual.enabled=true</code> to use JDK 21 virtual threads for Tomcat request handling — zero extra dependency needed.</div>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

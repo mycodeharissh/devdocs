@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Java — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(248,152,32,.15)">☕</div>
+  <div>
+    <h1>Java</h1>
+    <span class="page-version">JDK 21 LTS</span>
+  </div>
+</div>
+<p class="doc-text">Java is a class-based, strongly typed, object-oriented language that runs on the JVM. JDK 21 introduces virtual threads, record patterns, and sequenced collections.</p>
+<h2 class="section-title">Hello World</h2>
+<pre class="code-block"><span class="code-lang">java</span><code>public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}</code></pre>
+<h2 class="section-title">JDK 21 Highlights</h2>
+<table class="feature-table">
+  <thead><tr><th>Feature</th><th>JEP</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>Virtual Threads</td><td>JEP 444</td><td>Lightweight threads for high-throughput concurrency</td></tr>
+    <tr><td>Record Patterns</td><td>JEP 440</td><td>Deconstruct record values in pattern matching</td></tr>
+    <tr><td>Sequenced Collections</td><td>JEP 431</td><td>New interfaces for ordered collection access</td></tr>
+    <tr><td>String Templates</td><td>JEP 430 (preview)</td><td>Embed expressions inside string literals</td></tr>
+  </tbody>
+</table>
+<h2 class="section-title">Virtual Threads</h2>
+<pre class="code-block"><span class="code-lang">java</span><code>// Create a virtual thread
+Thread vt = Thread.ofVirtual().start(() -> {
+    System.out.println("Running in virtual thread");
+});
+
+// ExecutorService with virtual threads
+try (var exec = Executors.newVirtualThreadPerTaskExecutor()) {
+    exec.submit(() -> System.out.println("Task 1"));
+    exec.submit(() -> System.out.println("Task 2"));
+}</code></pre>
+<div class="callout callout-tip"><strong>💡 Tip</strong>Virtual threads are ideal for I/O-bound workloads. For CPU-bound tasks, platform threads are still preferred.</div>
+<h2 class="section-title">Records & Pattern Matching</h2>
+<pre class="code-block"><span class="code-lang">java</span><code>record Point(int x, int y) {}
+
+Object obj = new Point(3, 7);
+
+// Record pattern matching (JDK 21)
+if (obj instanceof Point(int x, int y)) {
+    System.out.printf("x=%d, y=%d%n", x, y);
+}</code></pre>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

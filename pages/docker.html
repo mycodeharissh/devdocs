@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Docker — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(36,150,237,.13)">🐳</div>
+  <div>
+    <h1>Docker</h1>
+    <span class="page-version">Docker Engine 26</span>
+  </div>
+</div>
+<p class="doc-text">Docker packages your application and its dependencies into a portable container image that runs identically on any machine or cloud provider.</p>
+<h2 class="section-title">Dockerfile — Node App</h2>
+<pre class="code-block"><span class="code-lang">dockerfile</span><code>FROM node:22-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM node:22-alpine
+WORKDIR /app
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+EXPOSE 3000
+CMD ["node", "dist/server.js"]</code></pre>
+<h2 class="section-title">docker-compose.yml</h2>
+<pre class="code-block"><span class="code-lang">yaml</span><code>services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgres://user:pass@db:5432/mydb
+    depends_on:
+      - db
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: pass
+      POSTGRES_DB: mydb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:</code></pre>
+<h2 class="section-title">Useful Commands</h2>
+<pre class="code-block"><span class="code-lang">bash</span><code>docker build -t my-app .           # build image
+docker run -p 3000:3000 my-app     # run container
+docker compose up -d               # start all services
+docker compose logs -f             # stream logs
+docker exec -it &lt;id&gt; sh           # shell inside container
+docker image prune -f              # clean up unused images</code></pre>
+<div class="callout callout-tip"><strong>💡 Multi-stage builds</strong>Always use multi-stage builds to keep your final image small — only ship the production artefact, not your build tools.</div>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

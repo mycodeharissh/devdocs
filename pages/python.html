@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Python — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(75,139,190,.15)">🐍</div>
+  <div>
+    <h1>Python</h1>
+    <span class="page-version">3.12</span>
+  </div>
+</div>
+<p class="doc-text">Python is a high-level, interpreted language known for its readable syntax and vast ecosystem. Python 3.12 brings faster interpreter startup, better error messages, and type parameter syntax.</p>
+<h2 class="section-title">Hello World</h2>
+<pre class="code-block"><span class="code-lang">python</span><code>print("Hello, World!")</code></pre>
+<h2 class="section-title">3.12 Highlights</h2>
+<table class="feature-table">
+  <thead><tr><th>Feature</th><th>PEP</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td>Type Parameter Syntax</td><td>PEP 695</td><td>Cleaner generic class/function definitions</td></tr>
+    <tr><td>f-string improvements</td><td>PEP 701</td><td>Nested quotes, multi-line, and reuse in f-strings</td></tr>
+    <tr><td>Per-interpreter GIL</td><td>PEP 684</td><td>Each sub-interpreter gets its own GIL</td></tr>
+    <tr><td>Perf improvements</td><td>—</td><td>Up to 15% faster than 3.11</td></tr>
+  </tbody>
+</table>
+<h2 class="section-title">Type Hints & Generics</h2>
+<pre class="code-block"><span class="code-lang">python</span><code># Python 3.12 — new type parameter syntax
+type Vector[T] = list[T]
+
+def first[T](items: list[T]) -> T:
+    return items[0]
+
+class Stack[T]:
+    def __init__(self) -> None:
+        self._items: list[T] = []
+
+    def push(self, item: T) -> None:
+        self._items.append(item)
+
+    def pop(self) -> T:
+        return self._items.pop()</code></pre>
+<h2 class="section-title">Async / Await</h2>
+<pre class="code-block"><span class="code-lang">python</span><code>import asyncio
+
+async def fetch_data(url: str) -> str:
+    await asyncio.sleep(1)   # simulate I/O
+    return f"data from {url}"
+
+async def main():
+    results = await asyncio.gather(
+        fetch_data("https://api.example.com/a"),
+        fetch_data("https://api.example.com/b"),
+    )
+    for r in results:
+        print(r)
+
+asyncio.run(main())</code></pre>
+<div class="callout callout-tip"><strong>💡 Tip</strong>Use <code>asyncio.gather()</code> to run multiple coroutines concurrently — much faster than sequential awaits for I/O-bound work.</div>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

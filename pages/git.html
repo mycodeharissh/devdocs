@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Git & GitHub — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(240,80,50,.13)">🌿</div>
+  <div>
+    <h1>Git & GitHub</h1>
+    <span class="page-version">Git 2.x</span>
+  </div>
+</div>
+<p class="doc-text">Git is the industry-standard version control system. GitHub adds collaboration, Actions CI/CD, and Pages hosting on top.</p>
+<h2 class="section-title">Everyday Commands</h2>
+<pre class="code-block"><span class="code-lang">bash</span><code># Setup
+git config --global user.name  "Your Name"
+git config --global user.email "you@example.com"
+
+# Workflow
+git init                        # new repo
+git clone &lt;url&gt;                 # clone existing
+git status                      # what's changed?
+git add .                       # stage everything
+git commit -m "feat: add login" # commit
+git push origin main            # push
+
+# Branches
+git checkout -b feature/login   # new branch
+git merge feature/login         # merge into current
+git branch -d feature/login     # delete branch</code></pre>
+<h2 class="section-title">GitHub Actions — CI Example</h2>
+<pre class="code-block"><span class="code-lang">yaml</span><code>name: CI
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npm test</code></pre>
+<h2 class="section-title">Commit Convention</h2>
+<table class="feature-table">
+  <thead><tr><th>Prefix</th><th>When to use</th></tr></thead>
+  <tbody>
+    <tr><td><code>feat:</code></td><td>New feature</td></tr>
+    <tr><td><code>fix:</code></td><td>Bug fix</td></tr>
+    <tr><td><code>docs:</code></td><td>Documentation only</td></tr>
+    <tr><td><code>refactor:</code></td><td>Code restructure, no behaviour change</td></tr>
+    <tr><td><code>chore:</code></td><td>Build, tooling, dependencies</td></tr>
+  </tbody>
+</table>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

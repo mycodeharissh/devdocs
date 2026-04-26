@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Introduction — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(124,111,255,.15)">🚀</div>
+  <div>
+    <h1>Introduction</h1>
+    <span class="page-version">DevDocs v1.0</span>
+  </div>
+</div>
+<p class="doc-text">Welcome to <strong>DevDocs</strong> — a clean, fast, and colorful documentation template you can deploy to GitHub Pages in minutes. Add your own pages, customize the sidebar, and document your stack your way.</p>
+<h2 class="section-title">What's included</h2>
+<p class="doc-text">Out of the box you get: a collapsible, searchable sidebar; active page highlighting; full mobile responsiveness; syntax-highlighted code blocks; callout cards; feature tables; and GitHub Pages–ready structure.</p>
+<div class="callout callout-tip"><strong>💡 Tip</strong>Duplicate any page in <code>pages/</code>, update its content, and add a link in the sidebar — you're done.</div>
+<h2 class="section-title">Folder structure</h2>
+<pre class="code-block"><span class="code-lang">text</span><code>devdocs/
+├── index.html          ← Home page
+├── css/
+│   └── style.css       ← All styles (edit tokens here)
+├── js/
+│   ├── main.js         ← Sidebar logic
+│   └── page-shell.js   ← Auto-builds sidebar on each page
+└── pages/
+    ├── introduction.html
+    ├── java.html
+    ├── python.html
+    └── ...             ← Add your own pages
+</code></pre>
+<h2 class="section-title">Deploying to GitHub Pages</h2>
+<p class="doc-text">Push to a repository, go to <strong>Settings → Pages</strong>, choose branch <code>main</code> and root <code>/</code>, then save. Your docs will be live at <code>https://&lt;you&gt;.github.io/&lt;repo&gt;</code>.</p>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

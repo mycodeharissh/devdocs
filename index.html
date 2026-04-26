@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevDocs – Developer Documentation</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- Mobile Top Bar -->
+  <header class="topbar">
+    <button class="hamburger" id="hamburger" aria-label="Toggle sidebar">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="topbar-logo">
+      <span class="logo-icon">⌨</span>
+      <span class="logo-text">DevDocs</span>
+    </div>
+    <div class="topbar-spacer"></div>
+  </header>
+
+  <!-- Overlay for mobile -->
+  <div class="overlay" id="overlay"></div>
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="sidebar-logo">
+          <span class="logo-icon">⌨</span>
+          <span class="logo-text">DevDocs</span>
+        </div>
+        <button class="collapse-btn" id="collapseBtn" title="Collapse sidebar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+      </div>
+
+      <div class="sidebar-search">
+        <input type="text" placeholder="Search docs…" id="searchInput" />
+        <span class="search-icon">⌕</span>
+      </div>
+
+      <nav class="sidebar-nav">
+
+        <div class="nav-group">
+          <span class="nav-group-label">Getting Started</span>
+          <a href="pages/introduction.html" class="nav-item" data-page="introduction">
+            <span class="nav-icon">🚀</span>
+            <span class="nav-label">Introduction</span>
+          </a>
+          <a href="pages/setup.html" class="nav-item" data-page="setup">
+            <span class="nav-icon">⚙️</span>
+            <span class="nav-label">Setup & Install</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-group-label">Languages</span>
+          <a href="pages/java.html" class="nav-item" data-page="java">
+            <span class="nav-icon nav-dot" style="background:var(--java)"></span>
+            <span class="nav-label">Java</span>
+            <span class="nav-badge">JDK 21</span>
+          </a>
+          <a href="pages/python.html" class="nav-item" data-page="python">
+            <span class="nav-icon nav-dot" style="background:var(--python)"></span>
+            <span class="nav-label">Python</span>
+            <span class="nav-badge">3.12</span>
+          </a>
+          <a href="pages/javascript.html" class="nav-item" data-page="javascript">
+            <span class="nav-icon nav-dot" style="background:var(--js)"></span>
+            <span class="nav-label">JavaScript</span>
+            <span class="nav-badge">ES2024</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-group-label">Frameworks</span>
+          <a href="pages/react.html" class="nav-item" data-page="react">
+            <span class="nav-icon nav-dot" style="background:var(--react)"></span>
+            <span class="nav-label">React</span>
+            <span class="nav-badge">v19</span>
+          </a>
+          <a href="pages/nodejs.html" class="nav-item" data-page="nodejs">
+            <span class="nav-icon nav-dot" style="background:var(--node)"></span>
+            <span class="nav-label">Node.js</span>
+            <span class="nav-badge">v22</span>
+          </a>
+          <a href="pages/springboot.html" class="nav-item" data-page="springboot">
+            <span class="nav-icon nav-dot" style="background:var(--spring)"></span>
+            <span class="nav-label">Spring Boot</span>
+            <span class="nav-badge">3.x</span>
+          </a>
+        </div>
+
+        <div class="nav-group">
+          <span class="nav-group-label">Tools</span>
+          <a href="pages/git.html" class="nav-item" data-page="git">
+            <span class="nav-icon nav-dot" style="background:var(--git)"></span>
+            <span class="nav-label">Git & GitHub</span>
+          </a>
+          <a href="pages/docker.html" class="nav-item" data-page="docker">
+            <span class="nav-icon nav-dot" style="background:var(--docker)"></span>
+            <span class="nav-label">Docker</span>
+          </a>
+        </div>
+
+      </nav>
+
+      <div class="sidebar-footer">
+        <span>Built with ❤ — DevDocs</span>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="mainContent">
+      <div class="content-inner">
+        <!-- Content loaded here by JS or direct navigation -->
+        <div class="home-hero">
+          <div class="hero-badge">Documentation</div>
+          <h1 class="hero-title">Welcome to <span class="gradient-text">DevDocs</span></h1>
+          <p class="hero-sub">Your colorful, fast, and organized reference for Java, Python, React, and more. Pick a topic from the sidebar to get started.</p>
+          <div class="hero-cards">
+            <a href="pages/java.html" class="hero-card java-card">
+              <div class="card-tag">Language</div>
+              <h3>Java</h3>
+              <p>OOP, streams, JDK 21 features</p>
+            </a>
+            <a href="pages/python.html" class="hero-card python-card">
+              <div class="card-tag">Language</div>
+              <h3>Python</h3>
+              <p>3.12 features, async, typing</p>
+            </a>
+            <a href="pages/react.html" class="hero-card react-card">
+              <div class="card-tag">Framework</div>
+              <h3>React</h3>
+              <p>Hooks, context, React 19</p>
+            </a>
+            <a href="pages/nodejs.html" class="hero-card node-card">
+              <div class="card-tag">Runtime</div>
+              <h3>Node.js</h3>
+              <p>Event loop, streams, APIs</p>
+            </a>
+            <a href="pages/javascript.html" class="hero-card js-card">
+              <div class="card-tag">Language</div>
+              <h3>JavaScript</h3>
+              <p>ES2024, promises, modules</p>
+            </a>
+            <a href="pages/git.html" class="hero-card git-card">
+              <div class="card-tag">Tool</div>
+              <h3>Git & GitHub</h3>
+              <p>Branching, workflows, CI/CD</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

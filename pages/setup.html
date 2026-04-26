@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Setup & Install — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(0,217,180,.12)">⚙️</div>
+  <div>
+    <h1>Setup & Install</h1>
+    <span class="page-version">Quick Start</span>
+  </div>
+</div>
+<p class="doc-text">No build tools needed. DevDocs is plain HTML/CSS/JS — open <code>index.html</code> locally or deploy straight to GitHub Pages.</p>
+<h2 class="section-title">Prerequisites</h2>
+<p class="doc-text">A modern browser is all you need to view the docs. To deploy, you need a GitHub account and Git installed.</p>
+<h2 class="section-title">Local preview</h2>
+<pre class="code-block"><span class="code-lang">bash</span><code># Clone your fork
+git clone https://github.com/YOUR_USER/devdocs.git
+cd devdocs
+
+# Open in browser (no server needed for basic use)
+start index.html          # Windows
+open index.html           # macOS
+xdg-open index.html       # Linux
+
+# Or serve with any static server
+npx serve .
+</code></pre>
+<div class="callout callout-info"><strong>ℹ️ Info</strong>The <code>page-shell.js</code> script dynamically builds the sidebar on every page — no backend, no build step.</div>
+<h2 class="section-title">Adding a new page</h2>
+<pre class="code-block"><span class="code-lang">steps</span><code>1. Copy any existing file in pages/  →  pages/mypage.html
+2. Update the page-header title and content
+3. Add a nav-item link in js/page-shell.js  (pages array)
+4. Commit & push — live instantly on GitHub Pages
+</code></pre>
+<div class="callout callout-warning"><strong>⚠️ Note</strong>Always link to pages with relative paths (<code>href="pagename.html"</code>) so GitHub Pages resolves them correctly.</div>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>

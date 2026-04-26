@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Node.js — DevDocs</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+</head>
+<body>
+<template id="__content__">
+
+<div class="page-header">
+  <div class="page-icon" style="background:rgba(104,160,99,.15)">🟢</div>
+  <div>
+    <h1>Node.js</h1>
+    <span class="page-version">v22 LTS</span>
+  </div>
+</div>
+<p class="doc-text">Node.js v22 brings native <code>require()</code> for ES modules, built-in test runner improvements, <code>--run</code> flag for package.json scripts, and V8 12.4.</p>
+<h2 class="section-title">HTTP Server</h2>
+<pre class="code-block"><span class="code-lang">js</span><code>import { createServer } from "node:http";
+
+const server = createServer((req, res) => {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify({ message: "Hello from Node!" }));
+});
+
+server.listen(3000, () =>
+  console.log("Server running on http://localhost:3000")
+);</code></pre>
+<h2 class="section-title">File System (Promises API)</h2>
+<pre class="code-block"><span class="code-lang">js</span><code>import { readFile, writeFile } from "node:fs/promises";
+
+const data = await readFile("input.txt", "utf8");
+const upper = data.toUpperCase();
+await writeFile("output.txt", upper);
+console.log("Done!");</code></pre>
+<h2 class="section-title">Built-in Test Runner</h2>
+<pre class="code-block"><span class="code-lang">js</span><code>import { test, describe } from "node:test";
+import assert from "node:assert/strict";
+
+describe("Math utils", () => {
+  test("adds two numbers", () => {
+    assert.equal(1 + 2, 3);
+  });
+
+  test("subtracts correctly", () => {
+    assert.equal(5 - 3, 2);
+  });
+});
+
+// Run: node --test</code></pre>
+<div class="callout callout-info"><strong>ℹ️ Node 22</strong>You can now <code>require()</code> synchronous ES modules directly — no need for dynamic <code>import()</code> in most cases.</div>
+
+</template>
+<script src="../js/page-shell.js"></script>
+<script src="../js/main.js"></script>
+</body>
+</html>
